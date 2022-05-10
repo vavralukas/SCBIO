@@ -8,3 +8,6 @@ Incluye:
 - palma_751 - palma_1000 (Lukas)
 - puno_1 - puno_250 (Lukas)
 - puno_501 - puno_750 (Paola)
+
+
+https://google.github.io/mediapipe/solutions/hands.html
