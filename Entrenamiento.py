@@ -26,14 +26,18 @@ tam_filtro1 = (4, 4)
 tam_filtro2 = (3, 3)
 tam_filtro3 = (2, 2)
 tam_pool = (2, 2)
-clases = 3
+clases = 2
 lr = 0.0005                         # learning rate
 
 preprocesamiento_entre = tf.keras.preprocessing.image.ImageDataGenerator(
     rescale = 1./255,
     shear_range = 0.3,
     zoom_range = 0.3,
-    horizontal_flip = True
+    horizontal_flip = True,
+    #vertical_flip=True,
+    #rotation_range=50,
+    #width_shift_range=0.3,                                          # Mover la foto a los lados
+    #height_shift_range=0.3
 )
 
 preprocesamiento_vali = tf.keras.preprocessing.image.ImageDataGenerator(

@@ -44,11 +44,17 @@ while (1):
                 pto_i3 = posiciones[10]
                 pto_i4 = posiciones[0]
                 pto_i5 = posiciones[9]
-                x1, y1 = (pto_i5[1]-100), (pto_i5[2]-100)
-                ancho, alto = (x1+200), (y1+200)
-                x2, y2 = x1+ancho, y1+alto
+                pto_5 = posiciones[5]
+                pto_17 = posiciones[17]
+                distancia = int(np.round_(np.sqrt((pto_5[1] - pto_17[1]) ** 2 + (pto_5[2] - pto_17[2]) ** 2)))
+                # print(distancia)
+                x1, y1 = (pto_i5[1] - int(1.5 * distancia)), (pto_i5[2] - int(1.8 * distancia))
+                ancho, alto = (x1 + 3 * distancia), (y1 + int(3.5 * distancia))
+                x2, y2 = ancho, alto
                 dedos_reg = copia[y1:y2, x1:x2]
-                dedos_reg = cv2.resize(dedos_reg, (200, 200), interpolation=cv2.INTER_CUBIC)
+                cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 255, 0), 3)
+                dedos_reg = cv2.resize(dedos_reg, (3 * distancia, int(3.5 * distancia)), interpolation=cv2.INTER_CUBIC)
+                dedos_reg = cv2.resize(dedos_reg, (200, 200))
                 x = tf.keras.preprocessing.image.img_to_array(dedos_reg)
                 x = np.expand_dims(x, axis=0)
                 vector = cnn.predict(x)
@@ -59,18 +65,13 @@ while (1):
                     print(resultado)
                     cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 255, 0), 3)
                     cv2.putText(frame, "{}".format(dire_img[0]), (x1, y1-5), 1, 1.3, (0, 255, 0), 1, cv2.LINE_AA)
-                elif respuesta == 1:
+                else: # respuesta == 1:
                     print(resultado)
                     cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 0, 255), 3)
                     cv2.putText(frame, "{}".format(dire_img[1]), (x1, y1 - 5), 1, 1.3, (0, 0, 255), 1, cv2.LINE_AA)
-                    #pyautogui.press("volumeup")
-                elif respuesta == 2:
-                    print(resultado)
-                    cv2.rectangle(frame, (x1, y1), (x2, y2), (255, 0, 0), 3)
-                    cv2.putText(frame, "{}".format(dire_img[2]), (x1, y1 - 5), 1, 1.3, (255, 0, 0), 1, cv2.LINE_AA)
-                    #pyautogui.press("volumedown")
-                else:
-                    cv2.putText(frame, "letra desconocida", (x1, y1 - 5), 1, 1.3, (255, 0, 0), 1, cv2.LINE_AA)
+                    # pyautogui.press("volumeup")
+                # else:
+                   # cv2.putText(frame, "letra desconocida", (x1, y1 - 5), 1, 1.3, (255, 0, 0), 1, cv2.LINE_AA)
 
     cv2.imshow("Video", frame)
     k = cv2.waitKey(1)

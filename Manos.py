@@ -1,10 +1,13 @@
 # LIBRERIAS
 import cv2                  # libreria de Opencv-python
 import os                   # movernos entre carpetas
-import mediapipe as mp      # Detector de manos
+import mediapipe as mp
+import numpy as np
+import time
+# Detector de manos
 
 # Creamos carpetas para almacenar las fotos de entrenamiento y validacion
-nombre = "L"
+nombre = "palma"
 directorio = "C:/Users/16pao/OneDrive/Escritorio/Teleco/Scbio/Flappymp/Fotos/validacion"
 carpeta = directorio + "/" + nombre
 
@@ -14,7 +17,7 @@ if not os.path.exists(carpeta):
     os.makedirs(carpeta)
 
 # contador para el nombre de las fotos
-cont = 0
+cont = 100
 
 # Iniciamos la camara (0 para WebCam 1 para externa)
 cap = cv2.VideoCapture(0)
@@ -48,18 +51,24 @@ while True:
                 pto_i3 = posiciones[12]
                 pto_i4 = posiciones[0]
                 pto_i5 = posiciones[9]
-                x1, y1 = (pto_i5[1]-100), (pto_i5[2]-100)
-                ancho, alto = (x1+200), (y1+200)
-                x2, y2 = x1+ancho, y1+alto
+                pto_5 = posiciones[5]
+                pto_17 = posiciones[17]
+                distancia = int(np.round_(np.sqrt((pto_5[1] - pto_17[1])**2 + (pto_5[2] - pto_17[2])**2)))
+                #print(distancia)
+                x1, y1 = (pto_i5[1]-int(1.5*distancia)), (pto_i5[2]-int(1.8*distancia))
+                ancho, alto = (x1+3*distancia), (y1+int(3.5*distancia))
+                x2, y2 = ancho, alto
                 dedos_reg = copia[y1:y2, x1:x2]
                 cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 255, 0), 3)
-            dedos_reg = cv2.resize(dedos_reg, (200, 200), interpolation= cv2.INTER_CUBIC)
-            cv2.imwrite(carpeta+"/L_{}.jpg".format(cont), dedos_reg)
+            dedos_reg = cv2.resize(dedos_reg, (3*distancia, int(3.5*distancia)), interpolation= cv2.INTER_CUBIC)
+            dedos_reg = cv2.resize(dedos_reg, (200, 200))
+            cv2.imwrite(carpeta+"/palma_{}.jpg".format(cont), dedos_reg)
             cont = cont + 1
+            time.sleep(0.05)
 
     cv2.imshow("Video", frame)
     k = cv2.waitKey(1)
-    if k == 27 or cont >= 300:       # Cuando tengamos guardadas 300 fotos
+    if k == 27 or cont >= 200:       # Cuando tengamos guardadas 300 fotos
         break
 
 cap.release()
