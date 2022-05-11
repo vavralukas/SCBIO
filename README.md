@@ -12,4 +12,6 @@ Incluye:
 
 https://google.github.io/mediapipe/solutions/hands.html
 
+## Dataset
+
 https://drive.google.com/drive/folders/1LASjcZljeLQpKCz3VpGwfoQfgYWynwyj?usp=sharing
