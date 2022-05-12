@@ -51,6 +51,10 @@ while (1):
                 x1, y1 = (pto_i5[1] - int(1.5 * distancia)), (pto_i5[2] - int(1.8 * distancia))
                 ancho, alto = (x1 + 3 * distancia), (y1 + int(3.5 * distancia))
                 x2, y2 = ancho, alto
+
+                if y1 <= 0 or x1 <= 0:
+                    continue
+
                 dedos_reg = copia[y1:y2, x1:x2]
                 cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 255, 0), 3)
                 dedos_reg = cv2.resize(dedos_reg, (3 * distancia, int(3.5 * distancia)), interpolation=cv2.INTER_CUBIC)
