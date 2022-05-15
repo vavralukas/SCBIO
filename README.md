@@ -1,4 +1,4 @@
-# A Videogame Controlled by Hand Gestures Recognized by a Neural Network
+# A Videogame Controlled with Hand Gestures Recognized by a Neural Network
 ## PIEDRA, PAPEL SIN TIJERAS
 
 Piedra, Papel sin Tijeras (Rock, Paper without Scissors) was developed as a final project of the Biologically Inspired Complex Systems course at Escuela Técnica Superior de Ingenieros de Telecomunicación, Universitat Politècnica de València.
