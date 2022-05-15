@@ -7,13 +7,16 @@ import tensorflow as tf
 import pyautogui
 from keras_preprocessing.image import img_to_array
 
-modelo = "C:/Users/16pao/OneDrive/Escritorio/Teleco/Scbio/Flappymp/Modelo.h5"
-peso = "C:/Users/16pao/OneDrive/Escritorio/Teleco/Scbio/Flappymp/pesos.h5"
+flag = 1
+
+modelo = "Modelo.h5"
+peso = "pesos.h5"
 cnn = load_model(modelo)
 cnn.load_weights(peso)
 
-direccion = "C:/Users/16pao/OneDrive/Escritorio/Teleco/Scbio/Flappymp/Fotos/validacion"
-dire_img = os.listdir(direccion)
+#direccion = "Fotos/validacion"
+#dire_img = os.listdir(direccion)
+dire_img = ['palma','puno']
 print("Nombres: ", dire_img)
 
 cap = cv2.VideoCapture(0)
@@ -52,8 +55,10 @@ while (1):
                 ancho, alto = (x1 + 3 * distancia), (y1 + int(3.5 * distancia))
                 x2, y2 = ancho, alto
 
-                if y1 <= 0 or x1 <= 0:
-                    continue
+                if y1 < 0:
+                    y1 = 0
+                if x1 < 0:
+                    x1 = 0
 
                 dedos_reg = copia[y1:y2, x1:x2]
                 cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 255, 0), 3)
@@ -69,15 +74,21 @@ while (1):
                     print(resultado)
                     cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 255, 0), 3)
                     cv2.putText(frame, "{}".format(dire_img[0]), (x1, y1-5), 1, 1.3, (0, 255, 0), 1, cv2.LINE_AA)
+                    pyautogui.press("up")
                 else: # respuesta == 1:
                     print(resultado)
                     cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 0, 255), 3)
                     cv2.putText(frame, "{}".format(dire_img[1]), (x1, y1 - 5), 1, 1.3, (0, 0, 255), 1, cv2.LINE_AA)
-                    # pyautogui.press("volumeup")
+                    pyautogui.press("down")
                 # else:
                    # cv2.putText(frame, "letra desconocida", (x1, y1 - 5), 1, 1.3, (255, 0, 0), 1, cv2.LINE_AA)
 
+                if flag == 1:
+                    os.startfile("Pelotita.exe")
+                    flag = 0
+
     cv2.imshow("Video", frame)
+    cv2.setWindowProperty("Video", cv2.WND_PROP_TOPMOST,1)
     k = cv2.waitKey(1)
     if k == 27:
         break
