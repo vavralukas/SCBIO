@@ -12,7 +12,7 @@ The deployed neural network was trained using Python. The following files were u
 - Prediccion.py
 
 ### Acquiring Photos for Model Training
-The photos in the database (which is described in the following chapter) were captured using ***manos.py***. Detection of hands in the photos was inspired by [this article](https://google.github.io/mediapipe/solutions/hands.html).
+The photos in the database (which is described in the following chapter) were captured using ***Manos.py***. Detection of hands in the photos was inspired by [this article](https://google.github.io/mediapipe/solutions/hands.html).
 
 <img src="https://github.com/vavralukas/SCBIO/blob/main/screenshots_readme/hand_detection.png" width="350" height="280">
 
