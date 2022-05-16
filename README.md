@@ -39,14 +39,14 @@ The trained model is afterwards used to predict which hand gesture is shown by a
 </p>
   
 ## Design of the Game
-The game was designed in Unity and is controled with hand gestures recognized by the NN model mentioned above. The design is following:
+The game was designed in Unity and is controlled with hand gestures recognized by the NN model mentioned above. All files necessary for a correct execution of the game are in [the Unity folder in this repository](https://github.com/vavralukas/SCBIO/tree/main/Unity). The design is following:
 
  <img src="https://github.com/vavralukas/SCBIO/blob/main/screenshots_readme/game_design.png" width="800" height="400">
 
-### The goal of the game
+### The Goal of the Game
 The goal of the game is to lead the ball through the playground using hand gestures avoiding hitting blue blocks. When the ball hits a blue block, the game starts again.
 
-### How to control the game
+### How to Control the Game
 As mentioned above, the game is controlled by two hand gestures: by a palm and by a fist
 
 1. PALM - when a player shows a palm to the camera, the ball goes UP 
