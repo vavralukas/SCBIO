@@ -27,8 +27,8 @@ The following database of photos was used to train the deployed NN model. The mo
 
 ### Training of the Model
 After acquiring a sufficient number of photos for both the train teset and the test set, the model was created and trained by using ***Entrenamiento.py***. This piece of code produces two files: 
-- Modelo.h5 (the model itself)
-- pesos.h5 (the weigths determined for every neuron)
+- Modelo.h5 (the model itself) - [link to the model](https://mega.nz/file/3xYyTTJL#3WKS4wBjR4h2XBg4wRp2OqSXIQe42A57MiuixtbZoCc)
+- pesos.h5 (the weigths determined for every neuron) - [link to the weights](https://mega.nz/file/b5JzGQLI#z30giCu-lGkGU9944zLyr0OwSv_rNHKQzzahgmUPNuc)
 
 ### Gesture Recognition
 The trained model is afterwards used to predict which hand gesture is shown by a user. The model reaches a sufficiently low error rate that permits faultless control of the game. For the gesture recongnition, ***Prediccion.py*** is used. In the images below, you can see examples of gesture recognitions.
