@@ -2,8 +2,7 @@
 
 This videogame was developed as a final project of the Biologically Inspired Complex Systems course at Escuela Técnica Superior de Ingenieros de Telecomunicación, Universitat Politècnica de València.
 
-*You can view the final videopresentation here.*  
-https://youtu.be/AF47z9VTAzo
+*You can view the final videopresentation here.* : [Link to Youtube](https://youtu.be/AF47z9VTAzo)
 
 ## Neural Network
 The deployed neural network was trained using Python. The following files were used for the development:
