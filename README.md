@@ -22,7 +22,7 @@ The following database of photos was used to train the deployed NN model. The mo
 - a palm (300 photos in the train set, 300 photos in the test set)
 - a fist (300 photos in the train set, 300 photos in the test set)
 
-[Link to the database](https://drive.google.com/drive/folders/1LASjcZljeLQpKCz3VpGwfoQfgYWynwyj?usp=sharing)
+[Link to the database](https://github.com/paolacoves/HandDetection/tree/main/Dataset)
 
 ### Training of the Model
 After acquiring a sufficient number of photos for both the train teset and the test set, the model was created and trained by using ***Entrenamiento.py***. This piece of code produces two files: 
